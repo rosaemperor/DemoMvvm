@@ -1,5 +1,6 @@
 package com.demomvvm.base;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -24,6 +25,9 @@ import com.zhy.autolayout.AutoLinearLayout;
 public abstract class BaseActivity extends AutoLayoutActivity{
     private LinearLayout mainView;
     protected TitleBar titleBar;
+    protected enum TransitionMode{
+            LEFT,RIGHT,BOTTOM,TOP
+    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +38,16 @@ public abstract class BaseActivity extends AutoLayoutActivity{
         mainView.setLayoutParams(layoutParams);
         mainView.setFitsSystemWindows(true);
         setContentView(mainView);
+        overridePendingTransitionMode();
         iniTitleBar();
 
     }
+
+    /**
+     * 选择activity的跳出方向和跳出方向动画
+     * @return
+     */
+    protected abstract TransitionMode overridePendingTransitionMode();
 
     protected abstract void initViewModel();
 
@@ -63,6 +74,35 @@ public abstract class BaseActivity extends AutoLayoutActivity{
     public void setTitle(String title){
         titleBar.setTitle(title);
     }
-    
+    public void startActivity(Class<?> cls){
+        Intent intent = new Intent();
+        intent.setClass(this,cls);
+        startActivity(intent);
+    }
+    public void startActivity(Class<?> cls,Bundle bundle) throws Exception {
+        if(null == bundle){
+            throw new Exception("can not start an activity with null bundle");
+        }
+        Intent intent = new Intent();
+        intent.setClass(this,cls);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 
+    @Override
+    public void overridePendingTransition(int enterAnim, int exitAnim) {
+        switch (overridePendingTransitionMode()){
+            case BOTTOM:
+                overridePendingTransition(R.anim.slide_bottom_in,R.anim.slide_bottom_out);
+                break;
+            case TOP:
+                break;
+            case LEFT:
+                break;
+            case RIGHT:
+                break;
+            default:
+                break;
+        }
+    }
 }

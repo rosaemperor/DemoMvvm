@@ -24,6 +24,12 @@ public class TestActivity extends BaseActivity{
           Log.d("AAA","titleBar高度"+titleHeight);
           titleBar.setVisibility(View.GONE);
     }
+
+    @Override
+    protected TransitionMode overridePendingTransitionMode() {
+        return TransitionMode.BOTTOM;
+    }
+
     @Override
     protected void initViewModel() {
        binding= initBinding(R.layout.activity_test_layout);
