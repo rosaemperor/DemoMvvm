@@ -19,7 +19,7 @@ class KotlinActivity : BaseActivity() {
 
     override fun configTitleBar() {
 
-        setTitle("kotlin测试")
+        setTitle("mer测试")
     }
 
 
