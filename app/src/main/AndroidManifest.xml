@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme">
         <meta-data android:name="design_width" android:value="768"/>
         <meta-data android:name="design_height" android:value="1280"/>
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.KotlinActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.TestActivity"/>
-        <activity android:name=".ui.KotlinActivity"/>
+        <!--<activity android:name=".ui.KotlinActivity"/>-->
 
     </application>
 

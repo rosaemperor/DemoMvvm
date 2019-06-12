@@ -5,5 +5,5 @@ package com.demomvvm.config;
  */
 
 public class Config {
-    public static final String BASEURL="http://api.ih2ome.cn/";
+    public static final String BASEURL="http://www.baidu.com/";
 }
