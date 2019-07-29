@@ -1,5 +1,6 @@
 package com.demomvvm.ui
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.demomvvm.Interface.APIHelp
 import com.demomvvm.R
@@ -27,6 +28,10 @@ class KotlinActivity : BaseActivity() {
     }
 
     override fun configTitleBar() {
+        var list = ArrayList<String>()
+        for (s in list) {
+            Log.d("TAG","$s")
+        }
 
         setTitle("mer测试,分支删除修改名字")
     }
@@ -43,7 +48,6 @@ class KotlinActivity : BaseActivity() {
                 override fun onResponse(call: Call<Any>, response: Response<Any>) {
                 }
             })
-
             var fileCall = RetrofitUtils.getInstance().createService(HttpService::class.java).getFile(File("AAA") , 1 , "dec" )
             fileCall.enqueue(object  : Callback<ResponseBody>{
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {

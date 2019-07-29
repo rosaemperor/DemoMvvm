@@ -1,10 +1,12 @@
 package com.demomvvm.application;
 
 import android.app.Application;
+import android.content.Context;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory;
-import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.dodola.rocoofix.RocooFix;
+//import com.facebook.drawee.backends.pipeline.Fresco;
+//import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory;
+//import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.zhy.autolayout.config.AutoLayoutConifg;
 
 import okhttp3.OkHttpClient;
@@ -25,11 +27,16 @@ public class MyApplication extends Application{
      * 初始化fresco
      */
     private void initFresco() {
-        OkHttpClient httpClient= new OkHttpClient();
-        ImagePipelineConfig config = OkHttpImagePipelineConfigFactory
-                .newBuilder(this,httpClient)
-                .build();
-        Fresco.initialize(this,config);
+//        OkHttpClient httpClient= new OkHttpClient();
+//        ImagePipelineConfig config = OkHttpImagePipelineConfigFactory
+//                .newBuilder(this,httpClient)
+//                .build();
+//        Fresco.initialize(this,config);
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
     }
 }
